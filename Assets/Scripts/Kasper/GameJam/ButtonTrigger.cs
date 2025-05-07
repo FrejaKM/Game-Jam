@@ -7,8 +7,15 @@ public class ButtonTrigger : MonoBehaviour
     public float speed = 1f;
     private bool triggered = false;
     public float TriggerHeight = 2f;
-    
-    void OnTriggerEnter(Collider other)
+
+    private float startPosition;
+
+    void Start()
+    {
+        startPosition = target.position.y;
+}
+
+void OnTriggerEnter(Collider other)
     {
         triggered = true;
         print(other.name);
@@ -25,7 +32,7 @@ public class ButtonTrigger : MonoBehaviour
         {
             target.transform.position += Vector3.up * (Time.deltaTime * speed);
         }
-        if (target.transform.position.y > 0.5 && !triggered)
+        if (target.transform.position.y > startPosition && !triggered)
         { 
             target.transform.position -= Vector3.up * (Time.deltaTime * speed);
         }
