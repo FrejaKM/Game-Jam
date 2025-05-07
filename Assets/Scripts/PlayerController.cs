@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
             // Destroy the enemy GameObject if it exists
             if (enemyObject != null)
             {
-                Destroy(enemyObject);
+                // Destroy(enemyObject);
             }
         }
     }

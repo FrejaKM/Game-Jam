@@ -19,8 +19,13 @@ public class CameraController : MonoBehaviour
 
  // LateUpdate is called once per frame after all Update functions have been completed.
  void LateUpdate()
+{
+    // Check if the player still exists before trying to access its transform
+    if (player != null)
     {
- // Maintain the same offset between the camera and player throughout the game.
-        transform.position = player.transform.position + offset;  
+        // Your existing camera follow code here
+        // For example:
+        transform.position = player.transform.position + offset;
     }
+}
 }
