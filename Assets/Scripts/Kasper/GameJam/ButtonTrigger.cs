@@ -10,12 +10,16 @@ public class ButtonTrigger : MonoBehaviour
 
     private float startPosition;
 
+    private float ButtonStartPosition;
+    public Transform button;
+
     void Start()
     {
         startPosition = target.position.y;
+        ButtonStartPosition = button.transform.position.y;
 }
 
-void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         triggered = true;
         print(other.name);
@@ -24,6 +28,7 @@ void OnTriggerEnter(Collider other)
     {
         triggered = false;
         print("exit true");
+        print(triggered);
     }
 
     private void Update()
@@ -35,6 +40,15 @@ void OnTriggerEnter(Collider other)
         if (target.transform.position.y > startPosition && !triggered)
         { 
             target.transform.position -= Vector3.up * (Time.deltaTime * speed);
+        }
+
+        if (triggered && transform.position.y > 0)
+        {
+            button.transform.position -= Vector3.up * (Time.deltaTime * speed);
+        }
+        if (!triggered && transform.position.y < ButtonStartPosition)
+        {
+            button.transform.position += Vector3.up * (Time.deltaTime * speed);
         }
     }
 }
